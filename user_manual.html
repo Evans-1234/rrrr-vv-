@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Manual</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>User Manual</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="preliminary.html">Preliminary Pages</a></li>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="literature.html">Literature Review</a></li>
+            <li><a href="summary.html">Summary & Recommendations</a></li>
+            <li><a href="user_manual.html">User Manual</a></li>
+            <li><a href="references.html">References</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>How to Use the System</h2>
+        <p>This section includes step-by-step instructions and screenshots.</p>
+
+        <h3>Uploading Screenshots</h3>
+        <p>Follow these steps to upload and display screenshots dynamically:</p>
+
+        <ol>
+            <li>Click the **"Choose File"** button.</li>
+            <li>Select an image file from your computer.</li>
+            <li>Click the **"Upload Screenshot"** button to display the image below.</li>
+        </ol>
+
+        <!-- File input for selecting images -->
+        <input type="file" id="screenshotInput" accept="image/*">
+        <button onclick="uploadScreenshot()">Upload Screenshot</button>
+
+        <h3></h3>
+        <div id="screenshotGallery"></div>
+    </main>
+
+    <footer>
+        <p>&copy; WELCOME TO OUR SITE.</p>
+    </footer>
+
+    <script>
+        function uploadScreenshot() {
+            const input = document.getElementById('screenshotInput');
+            const gallery = document.getElementById('screenshotGallery');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.width = "300px";
+                    img.style.margin = "10px";
+                    img.style.border = "2px solid #ddd";
+                    img.style.borderRadius = "5px";
+                    gallery.appendChild(img);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                alert("Please select an image file.");
+            }
+        }
+    </script>
+</body>
+</html>
+
